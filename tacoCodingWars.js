@@ -14,52 +14,90 @@ const tacos = [taco, taco1, taco2]
 
 // and returns a new object with name changed to "changed"
 
-const nameChange = (id, name)=> {             
-  let taco = tacos.find((taco)=> {
-    return (taco.id === id);
-  });
-  let tacoNewName = { ...taco, name: name  }
-  return tacoNewName;
+// Initially did these to pull from array
+
+// const nameChange = (id, name)=> {             
+//   let taco = tacos.find((taco)=> {
+//     return (taco.id === id);
+//   });
+//   let tacoNewName = { ...taco, name: name  }
+//   return tacoNewName;
+// };
+
+// console.log(nameChange(3, "halibut"));
+
+// this one just uses an object passed directly
+
+const nameChange = (object, name)=>{
+  return { ...object, name: name }
 };
 
-console.log(nameChange(3, "halibut"));
-
+let newName = nameChange(taco2, "Halibut");
+console.log(newName);
 
 // write a function that takes an tacoOBJ and return some
 
 // formatted html (will be a string technically)
 
-const prettyTaco = (id) => {
-  let taco = tacos.find((taco)=> {
-    return (taco.id === id);
-  });
+// doing it from the array
+
+// const prettyTaco = (id) => {
+//   let taco = tacos.find((taco)=> {
+//     return (taco.id === id);
+//   });
+//   return(
+//     `<div>
+//     <p>${taco.name}: $${taco.price}</p>
+//     <p>${taco.about}</p>
+//     </div>`
+//   );  
+// };
+
+// console.log(prettyTaco(2));
+
+// Doing it from the object
+
+const prettyTaco = (object) => {
   return(
     `<div>
-    <p>${taco.name}: $${taco.price}</p>
-    <p>${taco.about}</p>
+      <p>${taco.name}: $${taco.price}</p>
+      <p>${taco.about}</p>
     </div>`
-  );  
+  );
 };
 
-console.log(prettyTaco(2));
+let tacoString = prettyTaco(taco1);
+console.log(tacoString);
 
 // write a function that takes an tacoOBJ and return formatted price with
 
 // .00 
 
-const addCents = (id) => {
-  let taco = tacos.find((taco)=> {
-    return (taco.id === id);
-  });
+// Doing it from the array
+
+// const addCents = (id) => {
+//   let taco = tacos.find((taco)=> {
+//     return (taco.id === id);
+//   });
+//   let priceFloat = parseFloat(taco.price).toFixed(2);
+//   return(
+//     `$${priceFloat}`
+//   );
+// };
+
+// console.log(addCents(2));
+
+// Doing it from the object
+
+const addCents = (object) => {
   let priceFloat = parseFloat(taco.price).toFixed(2);
   return(
     `$${priceFloat}`
   );
 };
 
-console.log(addCents(2));
-
-
+let fancyPrice = addCents(taco1);
+console.log(fancyPrice);
 
 // create a new array where all of the prices is formatted with .00
 
